@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import { AssetManager, GameObject, VenusGame, InstancedMeshManager, RundotGameAPI } from "@series-inc/rundot-3d-engine"
+import {AssetManager, GameObject, VenusGame} from "@series-inc/rundot-3d-engine"
 import {
   PhysicsSystem,
   PrefabCollection,
@@ -7,11 +7,11 @@ import {
   SharedAnimationManager,
   StowKitSystem,
 } from "@series-inc/rundot-3d-engine/systems"
-import { PlayerComponent } from "./player"
-import { CameraController } from "./camera"
-import { BlobShadow } from "./character"
-import { Instantiation } from "./Instantiation"
-import { PickupSystem } from "./pickups-example"
+import {PlayerComponent} from "./player"
+import {CameraController} from "./camera"
+import {BlobShadow} from "./character"
+import {Instantiation} from "./Instantiation"
+import {PickupSystem} from "./pickups-example"
 
 /**
  * 3D Character Template Game
