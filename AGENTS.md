@@ -1,3 +1,5 @@
+[Run.3DEngine Docs Index]|root:.rundot/3d-engine-docs|core:{Component.md,GameObject.md,VenusGame.md}|patterns:{ComponentCommunication.md,CreatingGameObjects.md,MeshColliders.md,MeshLoading.md}|physics:{Colliders.md,PhysicsSystem.md,RigidBodyComponent.md}|rendering:{AssetManager.md,InstancedRenderer.md,MeshRenderer.md,SkeletalRenderer.md}|systems:{AnimationSystem.md,AudioSystem.md,InputManager.md,LightingSystem.md,NavigationSystem.md,ParticleSystem.md,PrefabSystem.md,SplineSystem.md,StowKitSystem.md,TweenSystem.md,UISystem.md}
+
 # Rundot 3D Engine - Agent Reference Guide
 
 Quick navigation index for LLMs to discover engine capabilities and patterns.
@@ -167,8 +169,3 @@ rundot-3D-engine/docs/
 - **Animation not playing?** Verify skeletal model is preloaded with `preloadSkeletalModel()`
 - **Component not updating?** Implement `update(deltaTime)` method
 - **Memory leak?** Call `dispose()` on GameObjects when done
-
-## Version Info
-
-This documentation is for Rundot 3D Engine built on Three.js with Rapier3D physics.
-

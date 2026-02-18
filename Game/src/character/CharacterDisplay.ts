@@ -1,7 +1,7 @@
 import * as THREE from "three"
-import { Component } from "@series-ai/rundot-3d-engine"
-import { AnimationPerformance } from "@series-ai/rundot-3d-engine/systems"
-import { SkeletalRenderer } from "@series-ai/rundot-3d-engine"
+import { Component } from "@series-inc/rundot-3d-engine"
+import { AnimationPerformance } from "@series-inc/rundot-3d-engine/systems"
+import { SkeletalRenderer } from "@series-inc/rundot-3d-engine"
 import { BlobShadow } from "./BlobShadow"
 
 /**

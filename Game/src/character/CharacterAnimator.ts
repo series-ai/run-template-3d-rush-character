@@ -1,5 +1,5 @@
-import { Component } from "@series-ai/rundot-3d-engine"
-import { AnimationGraphComponent } from "@series-ai/rundot-3d-engine/systems"
+import { Component } from "@series-inc/rundot-3d-engine"
+import { AnimationGraphComponent } from "@series-inc/rundot-3d-engine/systems"
 import { CharacterDisplay } from "./CharacterDisplay"
 
 /**

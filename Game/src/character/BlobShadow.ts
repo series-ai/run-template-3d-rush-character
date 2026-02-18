@@ -1,6 +1,6 @@
 import * as THREE from "three"
-import { Component, GameObject, InstancedRenderer, InstancedMeshManager } from "@series-ai/rundot-3d-engine"
-import { StowKitSystem } from "@series-ai/rundot-3d-engine/systems"
+import { Component, GameObject, InstancedRenderer, InstancedMeshManager } from "@series-inc/rundot-3d-engine"
+import { StowKitSystem } from "@series-inc/rundot-3d-engine/systems"
 
 /**
  * Simple blob shadow for characters using GPU instancing.

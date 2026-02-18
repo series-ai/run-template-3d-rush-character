@@ -1,15 +1,15 @@
 import * as THREE from "three"
-import { Component } from "@series-ai/rundot-3d-engine"
+import { Component } from "@series-inc/rundot-3d-engine"
 
 import {
   RigidBodyComponentThree,
   RigidBodyType,
   ColliderShape,
   createCollisionGroup,
-} from "@series-ai/rundot-3d-engine/systems"
-import { MovementController } from "@series-ai/rundot-3d-engine"
-import { Input, InputAction } from "@series-ai/rundot-3d-engine/systems"
-import { VirtualJoystickThree } from "@series-ai/rundot-3d-engine"
+} from "@series-inc/rundot-3d-engine/systems"
+import { MovementController } from "@series-inc/rundot-3d-engine"
+import { Input, InputAction } from "@series-inc/rundot-3d-engine/systems"
+import { VirtualJoystickThree } from "@series-inc/rundot-3d-engine"
 import { CharacterDisplay, CharacterAnimator } from "../character"
 import { CollisionGroups } from "../config/CollisionGroups"
 import {

@@ -1,8 +1,8 @@
 import { PlayerComponent } from "../player"
-import { Component, GameObject, InteractionZone } from "@series-ai/rundot-3d-engine"
+import { Component, GameObject, InteractionZone } from "@series-inc/rundot-3d-engine"
 import * as THREE from "three"
 import { PickupSystem } from "./PickupSystem"
-import { Easing, TweenSystem } from "@series-ai/rundot-3d-engine/systems"
+import { Easing, TweenSystem } from "@series-inc/rundot-3d-engine/systems"
 
 export class Pickup extends Component {
     private interactionZone!: InteractionZone
