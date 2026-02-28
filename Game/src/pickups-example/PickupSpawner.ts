@@ -2,7 +2,7 @@ import { Component, GameObject } from "@series-inc/rundot-3d-engine";
 import * as THREE from "three";
 import { Pickup } from "./Pickup";
 import { PickupSystem } from "./PickupSystem";
-import { Instantiation } from "../Instantiation";
+import { Prefabs } from "../Prefabs";
 import { CharacterTemplateGame } from "../CharacterTemplateGame";
 
 export class PickupSpawner extends Component {
@@ -32,7 +32,7 @@ export class PickupSpawner extends Component {
     private spawnPickup(): void {
         this.spawnTimer = this.spawnInterval
 
-        const pickupPrefab = Instantiation.instantiate("pickup")
+        const pickupPrefab = Prefabs.instantiate("pickup")
         if (!pickupPrefab) {
             console.error("Failed to instantiate pickup prefab")
             return

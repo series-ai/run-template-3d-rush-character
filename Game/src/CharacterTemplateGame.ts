@@ -2,19 +2,17 @@ import * as THREE from "three"
 import {AssetManager, GameObject, VenusGame} from "@series-inc/rundot-3d-engine"
 import {
   PhysicsSystem,
-  PrefabCollection,
-  PrefabLoader,
   SharedAnimationManager,
   StowKitSystem,
 } from "@series-inc/rundot-3d-engine/systems"
 import {PlayerComponent} from "./player"
 import {CameraController} from "./camera"
 import {BlobShadow} from "./character"
-import {Instantiation} from "./Instantiation"
+import {Prefabs} from "./Prefabs"
 import {PickupSystem} from "./pickups-example"
 
 /**
- * 3D Character Template Game
+ * 3D Rush Template Character
  * Shows a playable character with third-person camera on a flat plane
  */
 export class CharacterTemplateGame extends VenusGame {
@@ -23,7 +21,6 @@ export class CharacterTemplateGame extends VenusGame {
   private player?: GameObject
   private cameraObject?: GameObject
   private simCamera?: CameraController
-  private prefabCollection?: PrefabCollection
   
   /**
    * Configure VenusGame settings
@@ -77,14 +74,14 @@ export class CharacterTemplateGame extends VenusGame {
    */
   protected async onDispose(): Promise<void> {
     // Cleanup logic goes here if needed
-    console.log("🧹 Cleaning up Character Template Game")
+    console.log("🧹 Cleaning up 3D Rush Template Character")
   }
 
   /**
    * Main setup - called by onStart
    */
   private async setup(): Promise<void> {
-    console.log("🎮 Starting Character Template Game Setup...")
+    console.log("🎮 Starting 3D Rush Template Character Setup...")
 
     // Initialize core systems
     await this.initializeSystems()
@@ -98,7 +95,7 @@ export class CharacterTemplateGame extends VenusGame {
     this.createPlayer()
     this.setupCamera()
 
-    console.log("✅ Character Template Game Setup Complete!")
+    console.log("✅ 3D Rush Template Character Setup Complete!")
   }
 
   /**
@@ -113,7 +110,7 @@ export class CharacterTemplateGame extends VenusGame {
     // Initialize systems in parallel
     await Promise.all([
       PhysicsSystem.initialize(),
-      Instantiation.initialize(),
+      Prefabs.initialize(),
     ])
 
     // SharedAnimationManager
@@ -135,19 +132,19 @@ export class CharacterTemplateGame extends VenusGame {
     console.log("📦 Loading assets...")
     const stowkit = StowKitSystem.getInstance()
 
-    // Load Core pack (for blob shadow texture)
-    await stowkit.loadPack("Main", "Core.stow")
+    // Load burgershop pack (for blob shadow texture - already loaded by Instantiation)
+    await stowkit.loadPack("burgerrush", "burgershop.stow")
 
     // Load Character pack
-    await stowkit.loadPack("Character", "Character.stow")
+    await stowkit.loadPack("character", "character.stow")
 
     // Register blob shadow batch
     await BlobShadow.registerBatch()
 
     // Load and register the main character model
     const characterScale = 1.2
-    const characterMesh = await stowkit.getSkinnedMesh("Character_Main", characterScale)
-    AssetManager.registerSkeletalModel("stowkit://Character_Main", characterMesh)
+    const characterMesh = await stowkit.getSkinnedMesh("character_main_character", characterScale)
+    AssetManager.registerSkeletalModel("stowkit://character_main_character", characterMesh)
 
     // Load animations
     const animationNames = [
@@ -158,7 +155,7 @@ export class CharacterTemplateGame extends VenusGame {
     ]
 
     for (const name of animationNames) {
-      await stowkit.getAnimation(name, "Character_Main")
+      await stowkit.getAnimation(name, "character_main_character")
     }
 
     // Map animation names to simpler aliases used by animator
@@ -172,7 +169,7 @@ export class CharacterTemplateGame extends VenusGame {
     // Register animation aliases
     const sharedAnimManager = SharedAnimationManager.getInstance()
     for (const [alias, fullName] of Object.entries(animationMappings)) {
-      const animation = await stowkit.getAnimation(fullName, "Character_Main")
+      const animation = await stowkit.getAnimation(fullName, "character_main_character")
       sharedAnimManager.registerClip(alias, animation)
     }
 
@@ -301,15 +298,5 @@ export class CharacterTemplateGame extends VenusGame {
     return this.simCamera
   }
 
-  /**
-   * Instantiate a prefab
-   */
-  public instantiate(prefabPath: string) {
-    const prefab = this.prefabCollection?.getPrefabByName(prefabPath)
-    if (!prefab) {
-      throw new Error(`Prefab not found: ${prefabPath}`)
-    }
-    return PrefabLoader.instantiatePrefab(prefab)
-  }
 }
 
